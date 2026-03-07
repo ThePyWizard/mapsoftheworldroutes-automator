@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"C:\\\\Users\\\\jishn\\\\OneDrive\\\\Documents\\\\mapsoftheworldroutes\\\\.agents\\\\skills\\\\remotion-best-practices\\\\rules\"\" 2>/dev/null || ls -la \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/.agents/skills/remotion-best-practices/rules/ \")",
+      "Bash(npm i zod @remotion/media @remotion/captions @remotion/install-whisper-cpp @remotion/google-fonts @remotion/zod-types)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npm i mediabunny)",
+      "Bash(ls /c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/bird_*.mov)",
+      "Bash(ffmpeg -i /c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/bird_1.mov)",
+      "Bash(done)",
+      "Bash(ls /c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/car_voice*)",
+      "Bash(ls -la \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/\"*car*)",
+      "Bash(ls -la \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/\"*Car*)",
+      "Bash(ls -la \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/\"*wav)",
+      "Bash(ffprobe -i \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/audio.wav\" -show_entries format=duration -v quiet -of csv=\"p=0\")",
+      "Bash(ffprobe -i \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/car-voice.wav\" -show_entries format=duration -v quiet -of csv=\"p=0\")",
+      "Bash(ffmpeg -i \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/car-voice.wav\" -t 64.757563 -c copy \"/c/Users/jishn/OneDrive/Documents/mapsoftheworldroutes/public/car-voice-trimmed.wav\" -y)",
+      "mcp__8abd93bb-daa6-4b11-8107-db95de44813c__tavily_crawl",
+      "WebFetch(domain:docs.openclaw.ai)"
+    ]
+  }
+}

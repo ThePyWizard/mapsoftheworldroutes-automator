@@ -1,0 +1,1444 @@
+[
+  {
+    "text": "For",
+    "startMs": 150,
+    "endMs": 300,
+    "timestampMs": 220,
+    "confidence": 0.958497
+  },
+  {
+    "text": " just",
+    "startMs": 300,
+    "endMs": 700,
+    "timestampMs": 480,
+    "confidence": 0.984395
+  },
+  {
+    "text": " $",
+    "startMs": 700,
+    "endMs": 800,
+    "timestampMs": 780,
+    "confidence": 0.893092
+  },
+  {
+    "text": "80",
+    "startMs": 800,
+    "endMs": 1410,
+    "timestampMs": 880,
+    "confidence": 0.99859
+  },
+  {
+    "text": " in",
+    "startMs": 1410,
+    "endMs": 1600,
+    "timestampMs": 1380,
+    "confidence": 0.934142
+  },
+  {
+    "text": " gas",
+    "startMs": 1600,
+    "endMs": 1980,
+    "timestampMs": 1760,
+    "confidence": 0.992123
+  },
+  {
+    "text": ",",
+    "startMs": 1980,
+    "endMs": 2010,
+    "timestampMs": 1960,
+    "confidence": 0.827355
+  },
+  {
+    "text": " you",
+    "startMs": 2010,
+    "endMs": 2160,
+    "timestampMs": 2100,
+    "confidence": 0.925941
+  },
+  {
+    "text": " can",
+    "startMs": 2160,
+    "endMs": 2280,
+    "timestampMs": 2300,
+    "confidence": 0.997782
+  },
+  {
+    "text": " drive",
+    "startMs": 2280,
+    "endMs": 2540,
+    "timestampMs": 2540,
+    "confidence": 0.995765
+  },
+  {
+    "text": " 680",
+    "startMs": 2540,
+    "endMs": 3360,
+    "timestampMs": 3380,
+    "confidence": 0.897816
+  },
+  {
+    "text": " miles",
+    "startMs": 3360,
+    "endMs": 3840,
+    "timestampMs": 3900,
+    "confidence": 0.988449
+  },
+  {
+    "text": " from",
+    "startMs": 3840,
+    "endMs": 4100,
+    "timestampMs": 4120,
+    "confidence": 0.893162
+  },
+  {
+    "text": " Nashville",
+    "startMs": 4100,
+    "endMs": 4780,
+    "timestampMs": 4580,
+    "confidence": 0.986332
+  },
+  {
+    "text": " to",
+    "startMs": 4780,
+    "endMs": 4840,
+    "timestampMs": 4860,
+    "confidence": 0.932563
+  },
+  {
+    "text": " New",
+    "startMs": 4840,
+    "endMs": 5060,
+    "timestampMs": 5080,
+    "confidence": 0.972077
+  },
+  {
+    "text": " Orleans",
+    "startMs": 5060,
+    "endMs": 5700,
+    "timestampMs": 5460,
+    "confidence": 0.997752
+  },
+  {
+    "text": " straight",
+    "startMs": 5700,
+    "endMs": 6000,
+    "timestampMs": 6020,
+    "confidence": 0.203378
+  },
+  {
+    "text": " through",
+    "startMs": 6000,
+    "endMs": 6160,
+    "timestampMs": 6240,
+    "confidence": 0.962904
+  },
+  {
+    "text": " the",
+    "startMs": 6160,
+    "endMs": 6320,
+    "timestampMs": 6400,
+    "confidence": 0.804113
+  },
+  {
+    "text": " birthplace",
+    "startMs": 6320,
+    "endMs": 6990,
+    "timestampMs": 6800,
+    "confidence": 0.932561
+  },
+  {
+    "text": " of",
+    "startMs": 6990,
+    "endMs": 7120,
+    "timestampMs": 7100,
+    "confidence": 0.99089
+  },
+  {
+    "text": " American",
+    "startMs": 7120,
+    "endMs": 7650,
+    "timestampMs": 7520,
+    "confidence": 0.985212
+  },
+  {
+    "text": " music",
+    "startMs": 7650,
+    "endMs": 7950,
+    "timestampMs": 7900,
+    "confidence": 0.949658
+  },
+  {
+    "text": ".",
+    "startMs": 7950,
+    "endMs": 8560,
+    "timestampMs": 8700,
+    "confidence": 0.936306
+  },
+  {
+    "text": " It",
+    "startMs": 8560,
+    "endMs": 8680,
+    "timestampMs": 8780,
+    "confidence": 0.997132
+  },
+  {
+    "text": " starts",
+    "startMs": 8680,
+    "endMs": 9140,
+    "timestampMs": 9100,
+    "confidence": 0.995843
+  },
+  {
+    "text": " on",
+    "startMs": 9140,
+    "endMs": 9180,
+    "timestampMs": 9360,
+    "confidence": 0.99798
+  },
+  {
+    "text": " Broadway",
+    "startMs": 9180,
+    "endMs": 9690,
+    "timestampMs": 9720,
+    "confidence": 0.990505
+  },
+  {
+    "text": " in",
+    "startMs": 9690,
+    "endMs": 9810,
+    "timestampMs": 9960,
+    "confidence": 0.983753
+  },
+  {
+    "text": " Nashville",
+    "startMs": 9810,
+    "endMs": 10390,
+    "timestampMs": 10460,
+    "confidence": 0.999123
+  },
+  {
+    "text": ",",
+    "startMs": 10390,
+    "endMs": 10640,
+    "timestampMs": 10680,
+    "confidence": 0.613147
+  },
+  {
+    "text": " where",
+    "startMs": 10640,
+    "endMs": 10950,
+    "timestampMs": 10860,
+    "confidence": 0.964394
+  },
+  {
+    "text": " hon",
+    "startMs": 10950,
+    "endMs": 11200,
+    "timestampMs": 11020,
+    "confidence": 0.372331
+  },
+  {
+    "text": "ky",
+    "startMs": 11200,
+    "endMs": 11330,
+    "timestampMs": 11200,
+    "confidence": 0.985601
+  },
+  {
+    "text": "-",
+    "startMs": 11330,
+    "endMs": 11510,
+    "timestampMs": 11360,
+    "confidence": 0.577637
+  },
+  {
+    "text": "ton",
+    "startMs": 11510,
+    "endMs": 11630,
+    "timestampMs": 11360,
+    "confidence": 0.996957
+  },
+  {
+    "text": "k",
+    "startMs": 11630,
+    "endMs": 11700,
+    "timestampMs": 11500,
+    "confidence": 0.999108
+  },
+  {
+    "text": " bars",
+    "startMs": 11700,
+    "endMs": 12010,
+    "timestampMs": 11820,
+    "confidence": 0.995683
+  },
+  {
+    "text": " blast",
+    "startMs": 12010,
+    "endMs": 12400,
+    "timestampMs": 12240,
+    "confidence": 0.988676
+  },
+  {
+    "text": " live",
+    "startMs": 12400,
+    "endMs": 12750,
+    "timestampMs": 12660,
+    "confidence": 0.997021
+  },
+  {
+    "text": " country",
+    "startMs": 12750,
+    "endMs": 13250,
+    "timestampMs": 13000,
+    "confidence": 0.99021
+  },
+  {
+    "text": " music",
+    "startMs": 13250,
+    "endMs": 13640,
+    "timestampMs": 13320,
+    "confidence": 0.995059
+  },
+  {
+    "text": " onto",
+    "startMs": 13640,
+    "endMs": 13950,
+    "timestampMs": 13600,
+    "confidence": 0.970795
+  },
+  {
+    "text": " the",
+    "startMs": 13950,
+    "endMs": 14320,
+    "timestampMs": 13820,
+    "confidence": 0.995357
+  },
+  {
+    "text": " street",
+    "startMs": 14320,
+    "endMs": 14710,
+    "timestampMs": 14140,
+    "confidence": 0.996858
+  },
+  {
+    "text": " 24",
+    "startMs": 14710,
+    "endMs": 15100,
+    "timestampMs": 14780,
+    "confidence": 0.86342
+  },
+  {
+    "text": " hours",
+    "startMs": 15100,
+    "endMs": 15480,
+    "timestampMs": 15120,
+    "confidence": 0.978405
+  },
+  {
+    "text": " a",
+    "startMs": 15480,
+    "endMs": 15540,
+    "timestampMs": 15320,
+    "confidence": 0.995752
+  },
+  {
+    "text": " day",
+    "startMs": 15540,
+    "endMs": 16120,
+    "timestampMs": 15680,
+    "confidence": 0.999638
+  },
+  {
+    "text": ".",
+    "startMs": 16120,
+    "endMs": 16120,
+    "timestampMs": 16340,
+    "confidence": 0.983078
+  },
+  {
+    "text": " Head",
+    "startMs": 16120,
+    "endMs": 16440,
+    "timestampMs": 16400,
+    "confidence": 0.993684
+  },
+  {
+    "text": " southwest",
+    "startMs": 16440,
+    "endMs": 17100,
+    "timestampMs": 16960,
+    "confidence": 0.682496
+  },
+  {
+    "text": ",",
+    "startMs": 17100,
+    "endMs": 17280,
+    "timestampMs": 17300,
+    "confidence": 0.597535
+  },
+  {
+    "text": " and",
+    "startMs": 17280,
+    "endMs": 17470,
+    "timestampMs": 17380,
+    "confidence": 0.99819
+  },
+  {
+    "text": " in",
+    "startMs": 17470,
+    "endMs": 17620,
+    "timestampMs": 17540,
+    "confidence": 0.995877
+  },
+  {
+    "text": " 3",
+    "startMs": 17620,
+    "endMs": 17840,
+    "timestampMs": 17760,
+    "confidence": 0.50625
+  },
+  {
+    "text": " hours",
+    "startMs": 17840,
+    "endMs": 18210,
+    "timestampMs": 18140,
+    "confidence": 0.993752
+  },
+  {
+    "text": " you",
+    "startMs": 18210,
+    "endMs": 18440,
+    "timestampMs": 18340,
+    "confidence": 0.652823
+  },
+  {
+    "text": " hit",
+    "startMs": 18440,
+    "endMs": 18660,
+    "timestampMs": 18500,
+    "confidence": 0.998704
+  },
+  {
+    "text": " Memphis",
+    "startMs": 18660,
+    "endMs": 19330,
+    "timestampMs": 18980,
+    "confidence": 0.996153
+  },
+  {
+    "text": ",",
+    "startMs": 19330,
+    "endMs": 19360,
+    "timestampMs": 19460,
+    "confidence": 0.280824
+  },
+  {
+    "text": " Be",
+    "startMs": 19360,
+    "endMs": 19480,
+    "timestampMs": 19540,
+    "confidence": 0.952913
+  },
+  {
+    "text": "ale",
+    "startMs": 19480,
+    "endMs": 19660,
+    "timestampMs": 19660,
+    "confidence": 0.97728
+  },
+  {
+    "text": " Street",
+    "startMs": 19660,
+    "endMs": 20020,
+    "timestampMs": 20000,
+    "confidence": 0.963641
+  },
+  {
+    "text": ",",
+    "startMs": 20020,
+    "endMs": 20220,
+    "timestampMs": 20360,
+    "confidence": 0.940961
+  },
+  {
+    "text": " Sun",
+    "startMs": 20220,
+    "endMs": 20440,
+    "timestampMs": 20500,
+    "confidence": 0.83114
+  },
+  {
+    "text": " Studio",
+    "startMs": 20440,
+    "endMs": 20970,
+    "timestampMs": 21000,
+    "confidence": 0.746084
+  },
+  {
+    "text": ",",
+    "startMs": 20970,
+    "endMs": 21260,
+    "timestampMs": 21260,
+    "confidence": 0.84701
+  },
+  {
+    "text": " where",
+    "startMs": 21260,
+    "endMs": 21530,
+    "timestampMs": 21440,
+    "confidence": 0.969636
+  },
+  {
+    "text": " Elvis",
+    "startMs": 21530,
+    "endMs": 21900,
+    "timestampMs": 21760,
+    "confidence": 0.999775
+  },
+  {
+    "text": " made",
+    "startMs": 21900,
+    "endMs": 22320,
+    "timestampMs": 21980,
+    "confidence": 0.995251
+  },
+  {
+    "text": " his",
+    "startMs": 22320,
+    "endMs": 22420,
+    "timestampMs": 22220,
+    "confidence": 0.997801
+  },
+  {
+    "text": " first",
+    "startMs": 22420,
+    "endMs": 22790,
+    "timestampMs": 22540,
+    "confidence": 0.994926
+  },
+  {
+    "text": " recording",
+    "startMs": 22790,
+    "endMs": 23720,
+    "timestampMs": 23120,
+    "confidence": 0.998765
+  },
+  {
+    "text": ".",
+    "startMs": 23720,
+    "endMs": 23720,
+    "timestampMs": 23700,
+    "confidence": 0.979701
+  },
+  {
+    "text": " Then",
+    "startMs": 23830,
+    "endMs": 23980,
+    "timestampMs": 24040,
+    "confidence": 0.996253
+  },
+  {
+    "text": " you",
+    "startMs": 23980,
+    "endMs": 24180,
+    "timestampMs": 24200,
+    "confidence": 0.918734
+  },
+  {
+    "text": " leave",
+    "startMs": 24180,
+    "endMs": 24510,
+    "timestampMs": 24380,
+    "confidence": 0.997965
+  },
+  {
+    "text": " the",
+    "startMs": 24510,
+    "endMs": 24710,
+    "timestampMs": 24580,
+    "confidence": 0.993244
+  },
+  {
+    "text": " interstate",
+    "startMs": 24710,
+    "endMs": 25380,
+    "timestampMs": 24980,
+    "confidence": 0.804409
+  },
+  {
+    "text": " and",
+    "startMs": 25380,
+    "endMs": 25580,
+    "timestampMs": 25400,
+    "confidence": 0.893966
+  },
+  {
+    "text": " drop",
+    "startMs": 25580,
+    "endMs": 25840,
+    "timestampMs": 25680,
+    "confidence": 0.997231
+  },
+  {
+    "text": " into",
+    "startMs": 25840,
+    "endMs": 26100,
+    "timestampMs": 25900,
+    "confidence": 0.990339
+  },
+  {
+    "text": " the",
+    "startMs": 26100,
+    "endMs": 26300,
+    "timestampMs": 26140,
+    "confidence": 0.989802
+  },
+  {
+    "text": " Mississippi",
+    "startMs": 26300,
+    "endMs": 27030,
+    "timestampMs": 26640,
+    "confidence": 0.995492
+  },
+  {
+    "text": " Delta",
+    "startMs": 27030,
+    "endMs": 27450,
+    "timestampMs": 27040,
+    "confidence": 0.857246
+  },
+  {
+    "text": ",",
+    "startMs": 27450,
+    "endMs": 27490,
+    "timestampMs": 27520,
+    "confidence": 0.756255
+  },
+  {
+    "text": " the",
+    "startMs": 27490,
+    "endMs": 27720,
+    "timestampMs": 27640,
+    "confidence": 0.996736
+  },
+  {
+    "text": " flatt",
+    "startMs": 27720,
+    "endMs": 28020,
+    "timestampMs": 27960,
+    "confidence": 0.98574
+  },
+  {
+    "text": "est",
+    "startMs": 28020,
+    "endMs": 28220,
+    "timestampMs": 28180,
+    "confidence": 0.999626
+  },
+  {
+    "text": ",",
+    "startMs": 28220,
+    "endMs": 28350,
+    "timestampMs": 28420,
+    "confidence": 0.93463
+  },
+  {
+    "text": " most",
+    "startMs": 28350,
+    "endMs": 28610,
+    "timestampMs": 28540,
+    "confidence": 0.99883
+  },
+  {
+    "text": " haunting",
+    "startMs": 28610,
+    "endMs": 29140,
+    "timestampMs": 28980,
+    "confidence": 0.943018
+  },
+  {
+    "text": "ly",
+    "startMs": 29140,
+    "endMs": 29280,
+    "timestampMs": 29300,
+    "confidence": 0.998216
+  },
+  {
+    "text": " beautiful",
+    "startMs": 29280,
+    "endMs": 29870,
+    "timestampMs": 29620,
+    "confidence": 0.992472
+  },
+  {
+    "text": " farmland",
+    "startMs": 29870,
+    "endMs": 30400,
+    "timestampMs": 30260,
+    "confidence": 0.952566
+  },
+  {
+    "text": " in",
+    "startMs": 30400,
+    "endMs": 30530,
+    "timestampMs": 30520,
+    "confidence": 0.998711
+  },
+  {
+    "text": " America",
+    "startMs": 30530,
+    "endMs": 31000,
+    "timestampMs": 31000,
+    "confidence": 0.998015
+  },
+  {
+    "text": ".",
+    "startMs": 31000,
+    "endMs": 31320,
+    "timestampMs": 31540,
+    "confidence": 0.959953
+  },
+  {
+    "text": " This",
+    "startMs": 31320,
+    "endMs": 31670,
+    "timestampMs": 31760,
+    "confidence": 0.995027
+  },
+  {
+    "text": " is",
+    "startMs": 31670,
+    "endMs": 31870,
+    "timestampMs": 31980,
+    "confidence": 0.996447
+  },
+  {
+    "text": " where",
+    "startMs": 31870,
+    "endMs": 32310,
+    "timestampMs": 32160,
+    "confidence": 0.997603
+  },
+  {
+    "text": " the",
+    "startMs": 32310,
+    "endMs": 32540,
+    "timestampMs": 32340,
+    "confidence": 0.971947
+  },
+  {
+    "text": " blues",
+    "startMs": 32540,
+    "endMs": 33010,
+    "timestampMs": 32620,
+    "confidence": 0.852318
+  },
+  {
+    "text": " was",
+    "startMs": 33010,
+    "endMs": 33240,
+    "timestampMs": 32900,
+    "confidence": 0.994332
+  },
+  {
+    "text": " born",
+    "startMs": 33240,
+    "endMs": 33880,
+    "timestampMs": 33420,
+    "confidence": 0.99659
+  },
+  {
+    "text": ".",
+    "startMs": 33880,
+    "endMs": 33880,
+    "timestampMs": 34120,
+    "confidence": 0.882598
+  },
+  {
+    "text": " Cotton",
+    "startMs": 33880,
+    "endMs": 34320,
+    "timestampMs": 34280,
+    "confidence": 0.946827
+  },
+  {
+    "text": " fields",
+    "startMs": 34320,
+    "endMs": 34760,
+    "timestampMs": 34700,
+    "confidence": 0.964637
+  },
+  {
+    "text": " stretch",
+    "startMs": 34760,
+    "endMs": 35270,
+    "timestampMs": 35100,
+    "confidence": 0.9874
+  },
+  {
+    "text": " to",
+    "startMs": 35270,
+    "endMs": 35450,
+    "timestampMs": 35400,
+    "confidence": 0.998685
+  },
+  {
+    "text": " every",
+    "startMs": 35450,
+    "endMs": 35780,
+    "timestampMs": 35740,
+    "confidence": 0.997592
+  },
+  {
+    "text": " horizon",
+    "startMs": 35780,
+    "endMs": 36280,
+    "timestampMs": 36280,
+    "confidence": 0.998487
+  },
+  {
+    "text": ",",
+    "startMs": 36280,
+    "endMs": 36570,
+    "timestampMs": 36480,
+    "confidence": 0.823048
+  },
+  {
+    "text": " and",
+    "startMs": 36570,
+    "endMs": 36670,
+    "timestampMs": 36680,
+    "confidence": 0.91414
+  },
+  {
+    "text": " the",
+    "startMs": 36670,
+    "endMs": 36880,
+    "timestampMs": 36820,
+    "confidence": 0.998064
+  },
+  {
+    "text": " small",
+    "startMs": 36880,
+    "endMs": 37180,
+    "timestampMs": 37100,
+    "confidence": 0.998997
+  },
+  {
+    "text": " town",
+    "startMs": 37180,
+    "endMs": 37570,
+    "timestampMs": 37380,
+    "confidence": 0.996086
+  },
+  {
+    "text": " of",
+    "startMs": 37570,
+    "endMs": 37610,
+    "timestampMs": 37640,
+    "confidence": 0.998879
+  },
+  {
+    "text": " Clarks",
+    "startMs": 37610,
+    "endMs": 37960,
+    "timestampMs": 37880,
+    "confidence": 0.991316
+  },
+  {
+    "text": "dale",
+    "startMs": 37960,
+    "endMs": 38320,
+    "timestampMs": 38160,
+    "confidence": 0.998449
+  },
+  {
+    "text": " is",
+    "startMs": 38320,
+    "endMs": 38380,
+    "timestampMs": 38480,
+    "confidence": 0.97587
+  },
+  {
+    "text": " home",
+    "startMs": 38380,
+    "endMs": 38680,
+    "timestampMs": 38700,
+    "confidence": 0.997269
+  },
+  {
+    "text": " to",
+    "startMs": 38680,
+    "endMs": 38820,
+    "timestampMs": 38900,
+    "confidence": 0.986481
+  },
+  {
+    "text": " the",
+    "startMs": 38820,
+    "endMs": 39030,
+    "timestampMs": 39120,
+    "confidence": 0.986726
+  },
+  {
+    "text": " legendary",
+    "startMs": 39030,
+    "endMs": 39710,
+    "timestampMs": 39560,
+    "confidence": 0.99215
+  },
+  {
+    "text": " cross",
+    "startMs": 39710,
+    "endMs": 40000,
+    "timestampMs": 39920,
+    "confidence": 0.976235
+  },
+  {
+    "text": "roads",
+    "startMs": 40000,
+    "endMs": 40450,
+    "timestampMs": 40320,
+    "confidence": 0.977538
+  },
+  {
+    "text": " where",
+    "startMs": 40450,
+    "endMs": 40560,
+    "timestampMs": 40600,
+    "confidence": 0.777054
+  },
+  {
+    "text": " Robert",
+    "startMs": 40560,
+    "endMs": 40990,
+    "timestampMs": 40960,
+    "confidence": 0.982251
+  },
+  {
+    "text": " Johnson",
+    "startMs": 40990,
+    "endMs": 41480,
+    "timestampMs": 41400,
+    "confidence": 0.966118
+  },
+  {
+    "text": " supposedly",
+    "startMs": 41480,
+    "endMs": 42160,
+    "timestampMs": 42180,
+    "confidence": 0.973827
+  },
+  {
+    "text": " sold",
+    "startMs": 42160,
+    "endMs": 42520,
+    "timestampMs": 42560,
+    "confidence": 0.882117
+  },
+  {
+    "text": " his",
+    "startMs": 42520,
+    "endMs": 42790,
+    "timestampMs": 42800,
+    "confidence": 0.990342
+  },
+  {
+    "text": " soul",
+    "startMs": 42790,
+    "endMs": 43150,
+    "timestampMs": 43120,
+    "confidence": 0.996972
+  },
+  {
+    "text": " to",
+    "startMs": 43150,
+    "endMs": 43360,
+    "timestampMs": 43340,
+    "confidence": 0.993172
+  },
+  {
+    "text": " play",
+    "startMs": 43360,
+    "endMs": 43700,
+    "timestampMs": 43560,
+    "confidence": 0.995668
+  },
+  {
+    "text": " guitar",
+    "startMs": 43700,
+    "endMs": 44200,
+    "timestampMs": 44080,
+    "confidence": 0.995444
+  },
+  {
+    "text": ".",
+    "startMs": 44200,
+    "endMs": 44560,
+    "timestampMs": 44740,
+    "confidence": 0.995395
+  },
+  {
+    "text": " Further",
+    "startMs": 44560,
+    "endMs": 45090,
+    "timestampMs": 44960,
+    "confidence": 0.867333
+  },
+  {
+    "text": " south",
+    "startMs": 45090,
+    "endMs": 45470,
+    "timestampMs": 45440,
+    "confidence": 0.992135
+  },
+  {
+    "text": ",",
+    "startMs": 45470,
+    "endMs": 45620,
+    "timestampMs": 45680,
+    "confidence": 0.976701
+  },
+  {
+    "text": " the",
+    "startMs": 45620,
+    "endMs": 45850,
+    "timestampMs": 45840,
+    "confidence": 0.992665
+  },
+  {
+    "text": " Nat",
+    "startMs": 45850,
+    "endMs": 46080,
+    "timestampMs": 46040,
+    "confidence": 0.86462
+  },
+  {
+    "text": "che",
+    "startMs": 46080,
+    "endMs": 46380,
+    "timestampMs": 46200,
+    "confidence": 0.998176
+  },
+  {
+    "text": "z",
+    "startMs": 46380,
+    "endMs": 46440,
+    "timestampMs": 46320,
+    "confidence": 0.999943
+  },
+  {
+    "text": " Trace",
+    "startMs": 46440,
+    "endMs": 46760,
+    "timestampMs": 46640,
+    "confidence": 0.960906
+  },
+  {
+    "text": " Parkway",
+    "startMs": 46760,
+    "endMs": 47290,
+    "timestampMs": 47160,
+    "confidence": 0.986239
+  },
+  {
+    "text": " winds",
+    "startMs": 47290,
+    "endMs": 47670,
+    "timestampMs": 47680,
+    "confidence": 0.992587
+  },
+  {
+    "text": " through",
+    "startMs": 47670,
+    "endMs": 48200,
+    "timestampMs": 47920,
+    "confidence": 0.998357
+  },
+  {
+    "text": " ancient",
+    "startMs": 48200,
+    "endMs": 48730,
+    "timestampMs": 48400,
+    "confidence": 0.99426
+  },
+  {
+    "text": " forests",
+    "startMs": 48730,
+    "endMs": 49260,
+    "timestampMs": 48940,
+    "confidence": 0.994245
+  },
+  {
+    "text": " and",
+    "startMs": 49260,
+    "endMs": 49490,
+    "timestampMs": 49200,
+    "confidence": 0.983967
+  },
+  {
+    "text": " past",
+    "startMs": 49490,
+    "endMs": 49810,
+    "timestampMs": 49580,
+    "confidence": 0.988878
+  },
+  {
+    "text": " ante",
+    "startMs": 49810,
+    "endMs": 50090,
+    "timestampMs": 50000,
+    "confidence": 0.919741
+  },
+  {
+    "text": "bell",
+    "startMs": 50090,
+    "endMs": 50390,
+    "timestampMs": 50120,
+    "confidence": 0.999826
+  },
+  {
+    "text": "um",
+    "startMs": 50390,
+    "endMs": 50540,
+    "timestampMs": 50240,
+    "confidence": 0.999613
+  },
+  {
+    "text": " mans",
+    "startMs": 50540,
+    "endMs": 50840,
+    "timestampMs": 50560,
+    "confidence": 0.99666
+  },
+  {
+    "text": "ions",
+    "startMs": 50840,
+    "endMs": 51140,
+    "timestampMs": 50820,
+    "confidence": 0.99999
+  },
+  {
+    "text": ",",
+    "startMs": 51140,
+    "endMs": 51290,
+    "timestampMs": 51120,
+    "confidence": 0.528646
+  },
+  {
+    "text": " frozen",
+    "startMs": 51290,
+    "endMs": 51750,
+    "timestampMs": 51400,
+    "confidence": 0.987052
+  },
+  {
+    "text": " in",
+    "startMs": 51750,
+    "endMs": 51900,
+    "timestampMs": 51680,
+    "confidence": 0.996257
+  },
+  {
+    "text": " time",
+    "startMs": 51900,
+    "endMs": 52320,
+    "timestampMs": 52040,
+    "confidence": 0.99955
+  },
+  {
+    "text": ".",
+    "startMs": 52320,
+    "endMs": 52320,
+    "timestampMs": 52300,
+    "confidence": 0.846668
+  },
+  {
+    "text": " Path",
+    "startMs": 52420,
+    "endMs": 52590,
+    "timestampMs": 52680,
+    "confidence": 0.946916
+  },
+  {
+    "text": "s",
+    "startMs": 52590,
+    "endMs": 52650,
+    "timestampMs": 52900,
+    "confidence": 0.999828
+  },
+  {
+    "text": " that",
+    "startMs": 52650,
+    "endMs": 52920,
+    "timestampMs": 53040,
+    "confidence": 0.99382
+  },
+  {
+    "text": " Native",
+    "startMs": 52920,
+    "endMs": 53330,
+    "timestampMs": 53300,
+    "confidence": 0.977333
+  },
+  {
+    "text": " Americans",
+    "startMs": 53330,
+    "endMs": 53970,
+    "timestampMs": 53860,
+    "confidence": 0.995209
+  },
+  {
+    "text": " walked",
+    "startMs": 53970,
+    "endMs": 54360,
+    "timestampMs": 54220,
+    "confidence": 0.996101
+  },
+  {
+    "text": " for",
+    "startMs": 54360,
+    "endMs": 54560,
+    "timestampMs": 54500,
+    "confidence": 0.999367
+  },
+  {
+    "text": " centuries",
+    "startMs": 54560,
+    "endMs": 55440,
+    "timestampMs": 54960,
+    "confidence": 0.99976
+  },
+  {
+    "text": ".",
+    "startMs": 55440,
+    "endMs": 55440,
+    "timestampMs": 55600,
+    "confidence": 0.539271
+  },
+  {
+    "text": " And",
+    "startMs": 55440,
+    "endMs": 55720,
+    "timestampMs": 55780,
+    "confidence": 0.993771
+  },
+  {
+    "text": " then",
+    "startMs": 55720,
+    "endMs": 56090,
+    "timestampMs": 56080,
+    "confidence": 0.995942
+  },
+  {
+    "text": " New",
+    "startMs": 56090,
+    "endMs": 56370,
+    "timestampMs": 56500,
+    "confidence": 0.51656
+  },
+  {
+    "text": " Orleans",
+    "startMs": 56370,
+    "endMs": 57030,
+    "timestampMs": 56960,
+    "confidence": 0.998902
+  },
+  {
+    "text": ",",
+    "startMs": 57030,
+    "endMs": 57330,
+    "timestampMs": 57340,
+    "confidence": 0.376407
+  },
+  {
+    "text": " the",
+    "startMs": 57330,
+    "endMs": 57400,
+    "timestampMs": 57460,
+    "confidence": 0.939372
+  },
+  {
+    "text": " French",
+    "startMs": 57400,
+    "endMs": 57720,
+    "timestampMs": 57720,
+    "confidence": 0.992148
+  },
+  {
+    "text": " Quarter",
+    "startMs": 57720,
+    "endMs": 58240,
+    "timestampMs": 58040,
+    "confidence": 0.994304
+  },
+  {
+    "text": ",",
+    "startMs": 58240,
+    "endMs": 58310,
+    "timestampMs": 58400,
+    "confidence": 0.996649
+  },
+  {
+    "text": " the",
+    "startMs": 58310,
+    "endMs": 58480,
+    "timestampMs": 58500,
+    "confidence": 0.974782
+  },
+  {
+    "text": " jazz",
+    "startMs": 58480,
+    "endMs": 58810,
+    "timestampMs": 58740,
+    "confidence": 0.806297
+  },
+  {
+    "text": " clubs",
+    "startMs": 58810,
+    "endMs": 59220,
+    "timestampMs": 59180,
+    "confidence": 0.997478
+  },
+  {
+    "text": ",",
+    "startMs": 59220,
+    "endMs": 59450,
+    "timestampMs": 59560,
+    "confidence": 0.992449
+  },
+  {
+    "text": " the",
+    "startMs": 59450,
+    "endMs": 59620,
+    "timestampMs": 59640,
+    "confidence": 0.978232
+  },
+  {
+    "text": " C",
+    "startMs": 59620,
+    "endMs": 59700,
+    "timestampMs": 59760,
+    "confidence": 0.982324
+  },
+  {
+    "text": "aj",
+    "startMs": 59700,
+    "endMs": 59860,
+    "timestampMs": 59820,
+    "confidence": 0.999868
+  },
+  {
+    "text": "un",
+    "startMs": 59860,
+    "endMs": 60050,
+    "timestampMs": 59960,
+    "confidence": 0.999498
+  },
+  {
+    "text": " food",
+    "startMs": 60050,
+    "endMs": 60330,
+    "timestampMs": 60320,
+    "confidence": 0.964407
+  },
+  {
+    "text": "—",
+    "startMs": 60330,
+    "endMs": 60700,
+    "timestampMs": 60740,
+    "confidence": 0.207999
+  },
+  {
+    "text": "a",
+    "startMs": 60700,
+    "endMs": 60710,
+    "timestampMs": 60820,
+    "confidence": 0.840518
+  },
+  {
+    "text": " perfect",
+    "startMs": 60710,
+    "endMs": 61230,
+    "timestampMs": 61300,
+    "confidence": 0.999306
+  },
+  {
+    "text": " finale",
+    "startMs": 61230,
+    "endMs": 61670,
+    "timestampMs": 61780,
+    "confidence": 0.998868
+  },
+  {
+    "text": " to",
+    "startMs": 61670,
+    "endMs": 61820,
+    "timestampMs": 62000,
+    "confidence": 0.997223
+  },
+  {
+    "text": " a",
+    "startMs": 61820,
+    "endMs": 61900,
+    "timestampMs": 62220,
+    "confidence": 0.975926
+  },
+  {
+    "text": " drive",
+    "startMs": 61900,
+    "endMs": 62260,
+    "timestampMs": 62500,
+    "confidence": 0.997879
+  },
+  {
+    "text": " through",
+    "startMs": 62260,
+    "endMs": 62780,
+    "timestampMs": 62760,
+    "confidence": 0.995915
+  },
+  {
+    "text": " the",
+    "startMs": 62780,
+    "endMs": 63000,
+    "timestampMs": 63020,
+    "confidence": 0.996903
+  },
+  {
+    "text": " soul",
+    "startMs": 63000,
+    "endMs": 63290,
+    "timestampMs": 63280,
+    "confidence": 0.999609
+  },
+  {
+    "text": " of",
+    "startMs": 63290,
+    "endMs": 63450,
+    "timestampMs": 63520,
+    "confidence": 0.999394
+  },
+  {
+    "text": " American",
+    "startMs": 63450,
+    "endMs": 64030,
+    "timestampMs": 63980,
+    "confidence": 0.998392
+  },
+  {
+    "text": " music",
+    "startMs": 64030,
+    "endMs": 64430,
+    "timestampMs": 64440,
+    "confidence": 0.994831
+  },
+  {
+    "text": ".",
+    "startMs": 64430,
+    "endMs": 64680,
+    "timestampMs": 64640,
+    "confidence": 0.957313
+  }
+]

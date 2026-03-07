@@ -1,0 +1,44 @@
+{
+  "name": "mapsoftheworldroutes",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/captions": "^4.0.429",
+    "@remotion/cli": "4.0.429",
+    "@remotion/google-fonts": "^4.0.429",
+    "@remotion/install-whisper-cpp": "^4.0.429",
+    "@remotion/media": "^4.0.429",
+    "@remotion/zod-types": "^4.0.429",
+    "apify-client": "^2.22.2",
+    "kokoro-js": "^1.2.1",
+    "mediabunny": "^1.35.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.429",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.429",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "tsx": "^4.19.2",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle",
+    "render": "remotion render TravelRoute",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc",
+    "agent": "npx tsx scripts/agent.mts",
+    "generate-audio": "npx tsx scripts/generate-audio.mts",
+    "setup-route": "npx tsx scripts/prepare.mts",
+    "render-all": "npx tsx scripts/render-all.mts",
+    "transcribe": "npx tsx src/transcribe.mts"
+  }
+}
