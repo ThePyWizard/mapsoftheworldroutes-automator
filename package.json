@@ -13,6 +13,7 @@
     "@remotion/media": "^4.0.429",
     "@remotion/zod-types": "^4.0.429",
     "apify-client": "^2.22.2",
+    "elevenlabs": "^1.59.0",
     "kokoro-js": "^1.2.1",
     "mediabunny": "^1.35.0",
     "react": "19.2.3",
@@ -39,6 +40,7 @@
     "generate-audio": "npx tsx scripts/generate-audio.mts",
     "setup-route": "npx tsx scripts/prepare.mts",
     "render-all": "npx tsx scripts/render-all.mts",
-    "transcribe": "npx tsx src/transcribe.mts"
+    "transcribe": "npx tsx src/transcribe.mts",
+    "set-sfx": "npx tsx scripts/set-sfx.mts"
   }
 }

@@ -20,10 +20,10 @@ const getDuration = async (src: string) => {
 const calculateMetadata: CalculateMetadataFunction<TravelRouteProps> = async ({
   props,
 }) => {
-  const [audioDuration, videoDuration, outroDuration] = await Promise.all([
+  const [audioDuration, outroDuration, videoDuration] = await Promise.all([
     getDuration(staticFile(props.audioFile)),
-    getDuration(staticFile(props.videoFile)),
     getDuration(staticFile(props.outroFile)),
+    getDuration(staticFile(props.videoFile)),
   ]);
 
   const mainDurationInFrames = Math.ceil(audioDuration * FPS);
@@ -63,10 +63,15 @@ export const RemotionRoot: React.FC = () => {
               captionsFile: `route-${route.id}-captions.json`,
               logoFile: "logo.png",
               outroFile: "ta-outro.mp4",
-              carAudioFile: "car-voice-trimmed.wav",
+              carAudioFile: route.sfxFile,
               mainDurationInFrames: 30 * 60,
               outroDurationInFrames: 30 * 5,
               videoPlaybackRate: 1,
+              totalDistance: route.totalDistance,
+              captionStyle: route.captionStyle ?? 1,
+              locationImages:
+                ((route as { locationImages?: (string | null)[] }).locationImages ?? [])
+                  .filter((u): u is string => typeof u === "string" && u.length > 0),
             } satisfies TravelRouteProps
           }
         />

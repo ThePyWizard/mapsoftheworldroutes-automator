@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AbsoluteFill, Img, Sequence, Series, staticFile, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, Sequence, Series, staticFile, useCurrentFrame, useVideoConfig, interpolate } from "remotion";
 import { Video } from "@remotion/media";
 import { Audio } from "@remotion/media";
 import { loadFont } from "@remotion/google-fonts/Montserrat";
@@ -27,6 +27,9 @@ export const TravelRouteSchema = z.object({
   mainDurationInFrames: z.number(),
   outroDurationInFrames: z.number(),
   videoPlaybackRate: z.number(),
+  totalDistance: z.number(),
+  captionStyle: z.number().min(1).max(5),
+  locationImages: z.array(z.string()).default([]),
 });
 
 export type TravelRouteProps = z.infer<typeof TravelRouteSchema>;
@@ -64,6 +67,95 @@ const BirdOverlays: React.FC = () => {
   );
 };
 
+const LOCATION_IMAGE_WIDTH = 282;
+const LOCATION_IMAGE_HEIGHT = 212;
+const LOCATION_IMAGE_TOP = 600;
+
+const LocationImages: React.FC<{
+  locationImages: string[];
+  mainDurationInFrames: number;
+}> = ({ locationImages, mainDurationInFrames }) => {
+  if (!locationImages.length) return null;
+
+  const count = locationImages.length;
+  const sliceFrames = Math.floor(mainDurationInFrames / count);
+
+  return (
+    <>
+      {locationImages.map((url, i) => {
+        if (!url) return null;
+        const from = i * sliceFrames;
+        const duration =
+          i === count - 1 ? mainDurationInFrames - from : sliceFrames;
+        return (
+          <Sequence key={i} from={from} durationInFrames={duration}>
+            <AbsoluteFill
+              style={{
+                justifyContent: "flex-start",
+                alignItems: "center",
+                paddingTop: LOCATION_IMAGE_TOP,
+              }}
+            >
+              <Img
+                src={url}
+                style={{
+                  width: LOCATION_IMAGE_WIDTH,
+                  height: LOCATION_IMAGE_HEIGHT,
+                  objectFit: "cover",
+                  borderRadius: 12,
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+                }}
+              />
+            </AbsoluteFill>
+          </Sequence>
+        );
+      })}
+    </>
+  );
+};
+
+const MilesCounter: React.FC<{ totalDistance: number; mainDurationInFrames: number; videoPlaybackRate: number }> = ({ totalDistance, mainDurationInFrames, videoPlaybackRate }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const offsetFrames = Math.round((5 / videoPlaybackRate) * fps);
+  const startFrame = offsetFrames;
+  const endFrame = mainDurationInFrames - offsetFrames;
+
+  if (frame < startFrame) return null;
+
+  const miles = Math.round(
+    interpolate(frame, [startFrame, endFrame], [0, totalDistance], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    })
+  );
+
+  return (
+    <AbsoluteFill
+      style={{
+        justifyContent: "flex-end",
+        alignItems: "center",
+        paddingBottom: "65%",
+      }}
+    >
+      <div
+        style={{
+          fontFamily,
+          fontWeight: 700,
+          fontSize: 42,
+          color: "#000000",
+          backgroundColor: "#FFFFFF",
+          borderRadius: 24,
+          padding: "10px 28px",
+        }}
+      >
+        {miles} miles
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const MainContent: React.FC<{
   routeTitle: string;
   videoFile: string;
@@ -72,7 +164,11 @@ const MainContent: React.FC<{
   logoFile: string;
   carAudioFile: string;
   videoPlaybackRate: number;
-}> = ({ routeTitle, videoFile, audioFile, captionsFile, logoFile, carAudioFile, videoPlaybackRate }) => {
+  totalDistance: number;
+  mainDurationInFrames: number;
+  captionStyle: number;
+  locationImages: string[];
+}> = ({ routeTitle, videoFile, audioFile, captionsFile, logoFile, carAudioFile, videoPlaybackRate, totalDistance, mainDurationInFrames, captionStyle, locationImages }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
       {/* Layer 1: Background map animation video */}
@@ -145,6 +241,12 @@ const MainContent: React.FC<{
         </div>
       </AbsoluteFill>
 
+      {/* Layer 4b: Location images below the title, cycled across the main duration */}
+      <LocationImages
+        locationImages={locationImages}
+        mainDurationInFrames={mainDurationInFrames}
+      />
+
       {/* Layer 5: Voiceover audio at 150% volume */}
       <Audio src={staticFile(audioFile)} volume={1.5} />
 
@@ -152,7 +254,10 @@ const MainContent: React.FC<{
       <Audio src={staticFile(carAudioFile)} volume={0.3} />
 
       {/* Layer 7: Subtitles */}
-      <Captions captionsFile={captionsFile} />
+      <Captions captionsFile={captionsFile} captionStyle={captionStyle} />
+
+      {/* Layer 8: Miles counter */}
+      <MilesCounter totalDistance={totalDistance} mainDurationInFrames={mainDurationInFrames} videoPlaybackRate={videoPlaybackRate} />
     </AbsoluteFill>
   );
 };
@@ -183,6 +288,9 @@ export const TravelRoute: React.FC<TravelRouteProps> = ({
   mainDurationInFrames,
   outroDurationInFrames,
   videoPlaybackRate,
+  totalDistance,
+  captionStyle,
+  locationImages,
 }) => {
   return (
     <Series>
@@ -195,6 +303,10 @@ export const TravelRoute: React.FC<TravelRouteProps> = ({
           logoFile={logoFile}
           carAudioFile={carAudioFile}
           videoPlaybackRate={videoPlaybackRate}
+          totalDistance={totalDistance}
+          mainDurationInFrames={mainDurationInFrames}
+          captionStyle={captionStyle}
+          locationImages={locationImages}
         />
       </Series.Sequence>
       <Series.Sequence durationInFrames={outroDurationInFrames}>

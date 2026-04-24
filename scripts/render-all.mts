@@ -38,7 +38,17 @@ if (!fs.existsSync(routesPath)) {
   console.error("routes.json not found.");
   process.exit(1);
 }
-const routes: RouteIdea[] = JSON.parse(fs.readFileSync(routesPath, "utf-8"));
+const allRoutes: RouteIdea[] = JSON.parse(fs.readFileSync(routesPath, "utf-8"));
+
+// Optional: filter by route IDs passed as CLI args, e.g. `npm run render-all -- 4 5 6`
+const argIds = process.argv.slice(2).map(Number).filter(Boolean);
+const routes = argIds.length > 0
+  ? allRoutes.filter((r) => argIds.includes(r.id))
+  : allRoutes;
+
+if (argIds.length > 0) {
+  console.log(`\nRendering routes: ${routes.map((r) => r.id).join(", ")}`);
+}
 
 // --- Validate all files exist before starting ---
 console.log("\nValidating files...");
@@ -65,6 +75,24 @@ await downloadWhisperModel({ model: "medium.en", folder: WHISPER_PATH });
 console.log("Whisper ready.\n");
 
 fs.mkdirSync(OUT, { recursive: true });
+
+const FPS = 30;
+
+/** Returns duration in seconds using ffprobe. */
+function getMediaDuration(filePath: string): number {
+  const result = execSync(
+    `ffprobe -v error -select_streams a:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 "${filePath}"`,
+    { stdio: "pipe" }
+  ).toString().trim();
+  const dur = parseFloat(result);
+  if (!isNaN(dur) && dur > 0) return dur;
+  // Fallback: use format duration (works for video files too)
+  const result2 = execSync(
+    `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${filePath}"`,
+    { stdio: "pipe" }
+  ).toString().trim();
+  return parseFloat(result2);
+}
 
 // --- Process each route ---
 for (const route of routes) {
@@ -105,16 +133,36 @@ for (const route of routes) {
   fs.writeFileSync(captionsFile, JSON.stringify(captions, null, 2));
   console.log(`  Captions written (${captions.length} entries)`);
 
+  // --- Calculate durations and speed-adjust the video ---
+  const videoFilePath = path.join(PUBLIC, route.videoFile);
+  const audioDuration = getMediaDuration(audioFile);
+  const videoDuration = getMediaDuration(videoFilePath);
+  const ptsFactor = audioDuration / videoDuration;
+  const mainDurationInFrames = Math.ceil(audioDuration * FPS);
+  console.log(
+    `  Audio: ${audioDuration.toFixed(2)}s | Video: ${videoDuration.toFixed(2)}s | ptsFactor: ${ptsFactor.toFixed(4)} | mainFrames: ${mainDurationInFrames}`
+  );
+
+  // Use ffmpeg to bake the speed change into the video file so Remotion plays it at 1x
+  const adjustedVideoFileName = `route-${route.id}-video-adjusted.mp4`;
+  const adjustedVideoPath = path.join(PUBLIC, adjustedVideoFileName);
+  console.log(`  Adjusting video speed with ffmpeg (setpts=${ptsFactor.toFixed(6)}*PTS)...`);
+  execSync(
+    `ffmpeg -i "${videoFilePath}" -filter:v "setpts=${ptsFactor}*PTS" -an -c:v libx264 -preset fast -crf 18 -y "${adjustedVideoPath}"`,
+    { stdio: "pipe" }
+  );
+  console.log(`  Speed-adjusted video written: ${adjustedVideoFileName}`);
+
   // --- Build render props ---
   const props = {
     routeTitle: route.title,
-    videoFile: route.videoFile,
+    videoFile: adjustedVideoFileName,
     audioFile: route.audioFile,
     captionsFile: captionsFileName,
     logoFile: "logo.png",
     outroFile: "ta-outro.mp4",
-    carAudioFile: "car-voice-trimmed.wav",
-    mainDurationInFrames: 1800,
+    carAudioFile: route.sfxFile ?? "car-voice-trimmed.wav",
+    mainDurationInFrames,
     outroDurationInFrames: 150,
     videoPlaybackRate: 1,
   };
@@ -142,14 +190,16 @@ for (const route of routes) {
   } catch (err) {
     console.error(`  Render failed for Route ${route.id}:`, err);
     fs.unlinkSync(propsFile);
+    if (fs.existsSync(adjustedVideoPath)) fs.unlinkSync(adjustedVideoPath);
     process.exit(1);
   }
 
   fs.unlinkSync(propsFile);
+  if (fs.existsSync(adjustedVideoPath)) fs.unlinkSync(adjustedVideoPath);
 }
 
 console.log("=".repeat(62));
-console.log("  ALL 3 VIDEOS RENDERED");
+console.log(`  ALL ${routes.length} VIDEOS RENDERED`);
 console.log("=".repeat(62));
 console.log("\nOutput files:");
 for (const route of routes) {

@@ -1,58 +1,87 @@
 # Maps of the World Routes
 
-A TikTok travel video pipeline built with [Remotion](https://remotion.dev). An AI agent finds trending road trip routes daily, writes voiceover scripts, and generates TTS audio automatically. You export one map animation video manually, and the pipeline assembles the final TikTok-ready video.
+A TikTok travel video pipeline built on [Remotion](https://remotion.dev) and the [TravelAnimator](https://travelanimator.com) app's MCP server. Claude drives the whole thing end-to-end — pick a model (car / train / plane / boat), get back a rendered 9:16 video with voiceover, captions, map animation, place labels, waypoint images, and brand outro.
 
 ---
 
-## How it works
+## One-Shot Pipeline
+
+Tell Claude:
+
+> **"generate a travelanimator video using pickup truck"**
+> _(or `train`, `plane`, `boat`)_
+
+Claude runs the full pipeline:
 
 ```
-npm run agent
-  │
-  ├── Tavily searches for trending road trip routes
-  ├── Claude writes 3 voiceover scripts
-  ├── Kokoro TTS generates audio (local, no API key)
-  └── Prints Google Maps URLs + route scripts
-
-      ↓  (you pick a route)
-
-Open Google Maps URL → TravelAnimator app → export animation
-Save as public/background.mp4
-
-      ↓
-
-npm run setup-route -- <1|2|3>
-  │
-  ├── Copies selected audio → public/audio.wav
-  ├── Resamples to 16kHz for Whisper
-  └── Transcribes audio → public/captions.json
-
-      ↓
-
-npm run render
-  └── Remotion assembles final 1080×1920 video → out/
+1. Research — finds a trending route matching the model type
+2. routes.json — appends a new entry with next sequential id
+3. In parallel:
+     • TravelAnimator MCP → plot + export map animation → public/route-<id>-video.mp4
+     • ElevenLabs → voiceover → public/route-<id>-audio.wav
+     • Wikipedia scrape → waypoint images → routes.json locationImages
+4. set-sfx — binds the right ambient sound for the model
+5. render-all — Whisper transcribe + Remotion render → out/route-<id>-<title>.mp4
 ```
+
+The whole thing lives in the `travelanimator-mcp-commander` skill (see `skills/travelanimator-mcp-commander/SKILL.md`).
 
 ---
 
-## Video structure
+## Model → Trip Mapping
 
-Each output video is **1080×1920 (9:16)** at **30fps**, composed of two segments:
+The model name is the single input — it decides everything else:
+
+| Model | Research query | 3D asset in TA | SFX file | Real route |
+|---|---|---|---|---|
+| `car` / `pickup truck` | road trip | Pickup Truck (56/61) | `car-voice-trimmed.wav` | **ON** |
+| `train` | train trip | Train (looked up via `list_models`) | `train-voice.mp3` | off |
+| `plane` / `flight` | flight route | Plane | `plane-voice.mp3` | off |
+| `boat` | boat voyage | Boat | `boat-voice.mp3` | off |
+
+Real route is on only for land vehicles — TravelAnimator's real-route API follows road geometry, which doesn't apply to rails, skies, or water.
+
+---
+
+## Video Structure
+
+Each output is **1080×1920 (9:16)** at **30fps**, composed of two segments:
 
 ### Main segment (length = voiceover duration)
 
 | Layer | Content |
-|-------|---------|
-| 1 | Map animation (`background.mp4`) — speed-adjusted to match voiceover |
-| 2 | Bird video overlays — one every 5 seconds, 3 seconds long, cycles through 4 clips |
+|---|---|
+| 1 | Map animation video — speed-adjusted to match voiceover |
+| 2 | Bird overlays — one every 5s, 3s long, 4 clips cycled |
 | 3 | Channel logo — top-right corner |
-| 4 | Route title — `"CITY to CITY"` split across two lines, bold white text |
-| 5 | Voiceover audio — at 150% volume |
-| 6 | Car ambient sound — at 30% volume |
-| 7 | TikTok-style captions — word-by-word highlighting in gold |
+| 4 | Route title — `"CITY to CITY"` on two lines, Montserrat 900 |
+| 4b | Waypoint images from Wikipedia — cycled across the main duration |
+| 5 | Voiceover — ElevenLabs, 150% volume |
+| 6 | Ambient SFX — model-specific (car/train/plane/boat), 30% volume |
+| 7 | TikTok-style word-highlight captions — Whisper-transcribed |
+| 8 | Miles counter — bottom of frame |
 
 ### Outro segment
-Full-screen outro video (`ta-outro.mp4`).
+Full-screen `ta-outro.mp4`.
+
+---
+
+## TravelAnimator Defaults (applied every run)
+
+| Setting | Value |
+|---|---|
+| Map | Terrain |
+| Aspect ratio | 9:16 |
+| Model size | 0.2 |
+| Place label style | Chat bubble |
+| Place label scale | 1.7 (max) |
+| Place label color | Black (`#FF000000` ARGB) |
+| Place label visibility | Always |
+| Smoothening factor | 0.5 |
+| Line style | Auto, width 4.0, red `#FF0000` |
+| Distance unit | Miles |
+| Duration | = `scriptDurationSeconds`, capped at 60s |
+| Real route | On for car/pickup — off for train/plane/boat |
 
 ---
 
@@ -62,178 +91,162 @@ Full-screen outro video (`ta-outro.mp4`).
 
 ```bash
 npm install
+pip install requests   # for the Wikipedia image scraper
 ```
 
-### 2. Create your `.env` file
+### 2. `.env`
 
 ```bash
 cp .env.example .env
 ```
 
-Fill in:
-
 ```env
-ANTHROPIC_API_KEY=...   # console.anthropic.com
-TAVILY_API_KEY=...      # app.tavily.com — free tier: 1000 searches/month
+ELEVENLABS_API_KEY=...          # voiceover TTS
+ANTHROPIC_API_KEY=...            # optional — for legacy `npm run agent` flow
 ```
 
-> **TTS is fully local.** Kokoro (~87MB) downloads automatically on first run. No API key needed.
+### 3. Install ffmpeg
 
-### 3. Install ffmpeg (recommended)
+Needed for audio resampling + SFX trimming.
 
-Used to resample audio to 16kHz before Whisper transcription. Without it, transcription still works but accuracy may be lower.
+- Windows: `winget install ffmpeg`
+- Mac: `brew install ffmpeg`
 
-- Windows: [ffmpeg.org/download.html](https://ffmpeg.org/download.html) → add to PATH
-- Or via winget: `winget install ffmpeg`
+### 4. TravelAnimator app
 
-### 4. Place your static assets in `public/`
+1. Install TravelAnimator on your phone
+2. Open app → settings → enable **MCP server**
+3. Make sure Claude's MCP tool list shows `mcp__travel-animator__*` tools
 
-| File | Description |
-|------|-------------|
-| `logo.png` | Channel logo (displayed top-right) |
-| `ta-outro.mp4` | Outro video clip |
-| `car-voice-trimmed.wav` | Car ambient sound loop |
-| `bird_1.webm` … `bird_4.webm` | Bird overlay clips (cycle every 5s) |
+### 5. Pre-bundled assets in `public/`
+
+These ship with the project — do not delete:
+
+| File | Purpose |
+|---|---|
+| `logo.png` | Channel logo (218×218) |
+| `ta-outro.mp4` | Brand outro |
+| `bird_1.webm` … `bird_4.webm` | Alpha bird overlays |
+| `bird-sfx.mp3` | Bird chirp SFX |
+| `car-voice.wav` | Car ambience master (trimmed per-route to `car-voice-trimmed.wav`) |
+| `train-voice.mp3` | Train ambience |
+| `plane-voice.mp3` | Cabin ambience |
+| `boat-voice.mp3` | Boat ambience |
 
 ---
 
-## Daily workflow
-
-### Step 1 — Find trending routes and generate audio
+## Manual Commands (if you're running steps by hand)
 
 ```bash
-npm run agent
-```
+# 1. Voiceover — reads script from routes.json by id
+npm run generate-audio -- 53
 
-This runs the research agent. It will:
-- Search for trending road trip routes (uses **2 Tavily credits**)
-- Generate a voiceover script for each
-- Create TTS audio locally with Kokoro
-- Print the 3 route options with Google Maps URLs
+# 2. Scrape Wikipedia images for waypoints
+python scripts/scrape_location_images.py 53
+python scripts/scrape_location_images.py --missing    # catch up on every unfilled route
 
-Example output:
-```
-┌─ ROUTE 1: Sedona to Grand Canyon
-│  Why trending: Viral spring break road trip on TikTok
-│
-│  📝 VOICEOVER SCRIPT:
-│    Starting in Sedona, Arizona — one of the most
-│    ...
-│  🗺️  GOOGLE MAPS URL:
-│    https://www.google.com/maps/dir/Sedona%2C+AZ/...
-│  🎵  AUDIO: public/route-1-audio.wav
-└────────────────────────────────────────────────────────────
-```
+# 3. Bind SFX to a route
+npm run set-sfx -- 53 car
+npm run set-sfx -- 53 train
+npm run set-sfx -- 53 plane
+npm run set-sfx -- 53 boat
 
-### Step 2 — Export the map animation
+# 4. Render — validates inputs, Whisper-transcribes, Remotion-renders
+npm run render-all -- 53
 
-1. Open the Google Maps URL for your chosen route
-2. Import it into **TravelAnimator** (or similar map animation app)
-3. Export the video
-4. Save it as **`public/background.mp4`**
-
-> The video length doesn't need to match the voiceover — Remotion automatically adjusts the playback speed to sync them.
-
-### Step 3 — Transcribe and prepare
-
-```bash
-npm run setup-route -- 2   # replace 2 with your chosen route number
-```
-
-This will:
-- Copy `public/route-2-audio.wav` → `public/audio.wav`
-- Resample audio to 16kHz
-- Run Whisper transcription → `public/captions.json`
-- Print the final render command
-
-### Step 4 — Render
-
-```bash
-npm run render
-```
-
-Or with explicit props (printed by `setup-route`):
-
-```bash
-npx remotion render TravelRoute --props='{"routeTitle":"Sedona to Grand Canyon",...}'
-```
-
-Output video lands in `out/TravelRoute.mp4`.
-
----
-
-## Preview in Remotion Studio
-
-```bash
+# Remotion Studio preview
 npm run dev
 ```
 
-Opens a browser-based preview at `localhost:3000` where you can scrub through the video and tweak props live.
+Outputs live in `out/route-<id>-<title>.mp4`.
 
 ---
 
-## Re-transcribe audio
-
-If you replace `public/audio.wav` manually and want fresh captions:
-
-```bash
-npm run transcribe
-```
-
----
-
-## Project structure
+## Project Structure
 
 ```
 mapsoftheworldroutes/
+├── skills/
+│   ├── travelanimator-mcp-commander/   # End-to-end pipeline skill
+│   └── roadtrip-content-generator/     # Script-only skill (routes.json appends)
 ├── scripts/
-│   ├── agent.mts          # Research agent: Tavily search → Claude scripts → Kokoro TTS
-│   └── prepare.mts        # Prep script: copy audio, resample, transcribe
+│   ├── generate-audio.mts              # ElevenLabs TTS
+│   ├── render-all.mts                  # Whisper + Remotion render
+│   ├── set-sfx.mts                     # Binds SFX file to a route
+│   ├── scrape_location_images.py       # Wikipedia → locationImages
+│   └── prepare.mts                     # Legacy single-route prep
 ├── src/
-│   ├── index.ts           # Remotion entry point
-│   ├── Root.tsx           # Composition definition + metadata calculation
-│   ├── TravelRoute.tsx    # Main video component (layers, bird overlays, title)
-│   ├── Captions.tsx       # TikTok-style word-highlight captions
-│   └── transcribe.mts     # Standalone Whisper transcription script
+│   ├── Root.tsx                        # Composition + metadata calc
+│   ├── TravelRoute.tsx                 # Main video component
+│   ├── Captions.tsx                    # TikTok-style captions
+│   └── transcribe.mts                  # Standalone Whisper script
 ├── public/
-│   ├── background.mp4     # ← you place this (map animation from TravelAnimator)
-│   ├── audio.wav          # ← generated by setup-route
-│   ├── captions.json      # ← generated by setup-route
-│   ├── route-1-audio.wav  # ← generated by agent (option 1)
-│   ├── route-2-audio.wav  # ← generated by agent (option 2)
-│   ├── route-3-audio.wav  # ← generated by agent (option 3)
-│   ├── logo.png           # channel logo
-│   ├── ta-outro.mp4       # outro clip
-│   ├── car-voice-trimmed.wav
-│   └── bird_1–4.webm
-├── whisper.cpp/           # auto-downloaded by @remotion/install-whisper-cpp
-├── routes.json            # saved by agent, read by setup-route
-├── .env                   # your API keys (git-ignored)
-├── .env.example           # template
+│   ├── route-<id>-video.mp4            # TA export per route
+│   ├── route-<id>-audio.wav            # voiceover per route
+│   ├── route-<id>-captions.json        # Whisper output per route
+│   ├── car-voice.wav / car-voice-trimmed.wav
+│   ├── train-voice.mp3
+│   ├── plane-voice.mp3
+│   ├── boat-voice.mp3
+│   ├── bird-sfx.mp3
+│   ├── bird_1.webm … bird_4.webm
+│   ├── logo.png
+│   └── ta-outro.mp4
+├── out/
+│   └── route-<id>-<title>.mp4          # final renders
+├── routes.json                         # canonical route + script database
+├── CLAUDE.md                           # project-level Claude instructions
 └── remotion.config.ts
 ```
 
 ---
 
-## Tech stack
+## routes.json Schema
 
-| Tool | Role | Cost |
-|------|------|------|
-| [Remotion](https://remotion.dev) | Video composition and rendering | Free (personal use) |
-| [Claude](https://anthropic.com) (claude-sonnet-4-6) | Voiceover script writing | ~$0.001/run |
-| [Tavily](https://tavily.com) | Web search for trending routes | Free (1000/month) |
-| [Kokoro TTS](https://github.com/hexgrad/kokoro) (`kokoro-js`) | Local text-to-speech | Free, runs offline |
-| [Whisper.cpp](https://github.com/ggerganov/whisper.cpp) | Audio transcription for captions | Free, runs offline |
+```jsonc
+{
+  "id": 53,
+  "title": "Stinson Beach to Pescadero — ...",
+  "origin": "Stinson Beach, CA",
+  "destination": "Pescadero, CA",
+  "waypoints": ["Baker Beach, SF", "Ocean Beach, SF", "Half Moon Bay State Beach"],
+  "script": "Did you know for about $15 in gas...",
+  "googleMapsUrl": "https://www.google.com/maps/dir/...",
+  "whyTrending": "...",
+  "scriptDurationSeconds": 52,
+  "audioFile": "route-53-audio.wav",
+  "videoFile": "route-53-video.mp4",
+  "sfxFile": "car-voice-trimmed.wav",
+  "totalDistance": 105,
+  "captionStyle": 1,
+  "tiktokCaption": "did you know this 15$ roadtrip from Stinson Beach to Pescadero #travel #usroadtrip #traveltok #bayarea",
+  "locationImages": ["<wikipedia url>", "...", "..."]
+}
+```
 
 ---
 
-## npm scripts
+## Tech Stack
 
-| Script | Description |
-|--------|-------------|
-| `npm run agent` | Find trending routes, generate scripts + audio |
-| `npm run setup-route -- <N>` | Prepare files for route N (1, 2, or 3) |
-| `npm run render` | Render the final video |
-| `npm run dev` | Open Remotion Studio preview |
-| `npm run transcribe` | Re-run Whisper transcription on `public/audio.wav` |
-| `npm run build` | Bundle the Remotion project |
+| Tool | Role | Cost |
+|---|---|---|
+| [Remotion](https://remotion.dev) | Video composition + render | Free (personal) |
+| [TravelAnimator](https://travelanimator.com) | Map animation export via MCP | Paid (mobile app) |
+| [ElevenLabs](https://elevenlabs.io) | Voiceover TTS | Paid (~$0.01/route) |
+| [Whisper.cpp](https://github.com/ggerganov/whisper.cpp) | Caption transcription | Free, local |
+| [Wikipedia API](https://en.wikipedia.org/api/rest_v1/) | Waypoint images | Free |
+| Claude (via MCP) | Orchestration + research | Subscription |
+
+---
+
+## npm Scripts
+
+| Script | Purpose |
+|---|---|
+| `npm run generate-audio -- <id>` | ElevenLabs voiceover for one route |
+| `npm run set-sfx -- <id> <voice>` | Bind car/train/plane/boat SFX to a route |
+| `npm run render-all -- <id>` | Validate → transcribe → Remotion render |
+| `npm run dev` | Remotion Studio preview |
+| `npm run transcribe` | Re-run Whisper on `public/audio.wav` |
+| `npm run render` | Legacy single-route render |
+| `npm run agent` | Legacy Tavily research flow (pre-MCP) |

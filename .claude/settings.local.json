@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__travel-animator__get_route",
+      "mcp__travel-animator__list_models",
+      "mcp__travel-animator__clear_route",
+      "mcp__travel-animator__create_route",
+      "mcp__travel-animator__set_real_route",
+      "mcp__travel-animator__update_point",
+      "mcp__travel-animator__update_animation_state",
+      "mcp__travel-animator__export_video",
+      "mcp__travel-animator__get_export_progress",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''routes.json''\\)\\); print\\(len\\(data\\)\\); print\\(json.dumps\\(data[-1], indent=2\\)\\)\")",
+      "Bash(node -e \"const d=require\\(''./routes.json''\\); console.log\\(d.length\\); console.log\\(JSON.stringify\\(d[d.length-1], null, 2\\)\\)\")",
+      "mcp__travel-animator__list_maps",
+      "mcp__travel-animator__list_line_styles",
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(curl -s -H \"Authorization: kfoUtj9wbjelsFj2yYypXBtmHh197hreesgUff7fk1Z1sEBau7FbEZII\" \"https://api.pexels.com/v1/search?query=Los+Angeles+skyline&per_page=1\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['photos'][0]['src']['large']\\)\")",
+      "Bash(curl -s -H \"Authorization: kfoUtj9wbjelsFj2yYypXBtmHh197hreesgUff7fk1Z1sEBau7FbEZII\" \"https://api.pexels.com/v1/search?query=Joshua+Tree+National+Park&per_page=1\")",
+      "Bash(curl -s -H \"Authorization: kfoUtj9wbjelsFj2yYypXBtmHh197hreesgUff7fk1Z1sEBau7FbEZII\" \"https://api.pexels.com/v1/search?query=Route+66+Arizona&per_page=1\")",
+      "Bash(curl -s -H \"Authorization: kfoUtj9wbjelsFj2yYypXBtmHh197hreesgUff7fk1Z1sEBau7FbEZII\" \"https://api.pexels.com/v1/search?query=Flagstaff+Arizona+mountain+town&per_page=1\")",
+      "WebFetch(domain:docs.parallel.ai)",
+      "WebFetch(domain:parallel.ai)",
+      "mcp__travel-animator__get_exported_video"
+    ]
+  }
+}

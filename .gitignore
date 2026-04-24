@@ -14,9 +14,10 @@ public/audio.wav
 # Logs
 *.log
 
-# whisper.cpp binaries
+# whisper.cpp binaries and models
 whisper.cpp/*.exe
 whisper.cpp/*.dll
+whisper.cpp/*.bin
 
 # OS
 Thumbs.db
